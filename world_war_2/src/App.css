@@ -1,0 +1,66 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+;
+}
+
+.first_page {
+  display: flex;
+  position: relative;
+
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  min-width: 100%;
+  width: 100vw;
+  height: 100vh;
+
+
+  /* use public/ served root path (place frontend.png into the project's public/ folder) */
+  background-image: url('/frontend.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 2rem;
+  /* ensure the top bar doesn't overlap the content */
+  padding-top: calc(2rem + 64px);
+}
+
+.Topic {
+  font-size: 100px;
+  line-height: 1.1;
+  color: white;
+}
+
+.Topic2 {
+  font-size: 50px;
+  color: white;
+  font-style: italic;
+}
+
+
+.pages{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 64px;            /* adjust if you want a different bar height */
+  display: flex;
+  flex-direction: row; 
+  gap: 6rem;            
+  justify-content: center;
+  align-items: center;  
+  width: 100%;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  z-index: 1000;
+  background-color: rgba(13, 71, 13, 0.8);
+}
+.timeline,
+.theaters,
+.countries {
+  margin: 20px 0;
+  display: flex;
+  gap: 60px; 
+}
