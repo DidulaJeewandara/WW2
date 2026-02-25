@@ -26,6 +26,7 @@
   padding: 2rem;
   /* ensure the top bar doesn't overlap the content */
   padding-top: calc(2rem + 64px);
+  width: 150%;
 }
 
 .Topic {

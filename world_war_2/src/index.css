@@ -25,9 +25,11 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  flex-direction: column; /* changed: stack sections vertically */
+  align-items: stretch;   /* changed: allow sections to be full width */
+  min-width: 100vw;
   min-height: 100vh;
+  ;
 }
 
 h1 {
@@ -52,6 +54,139 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* add optional styling for the timeline section so it fills the viewport */
+.timeline_page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 4rem 1rem;
+}
+.timeline_inner {
+  max-width: 900px;
+  width: 100%;
+}
+
+/* first page background fills whole viewport */
+.first_page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;       /* content inside is centered */
+  justify-content: center;
+  background-image: url('./assets/your-background.jpg'); /* update path/name */
+  background-size: cover;    /* scale to cover whole area */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* timeline styles */
+.timeline {
+  display: grid;
+  grid-template-columns: 1fr 64px 1fr;
+  gap: 1.5rem 0;
+  position: relative;
+  align-items: start;
+  width: 100%;
+}
+
+/* vertical center line */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, rgba(10,200,100,0.16), rgba(10,200,100,0.06));
+  box-shadow: 0 0 20px rgba(10,200,100,0.12);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.timeline-item {
+  display: contents; /* each item supplies three grid cells */
+}
+
+.timeline-item .center {
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #0ff07a; /* bright green */
+  box-shadow: 0 0 12px rgba(15, 240, 122, 0.9);
+  border: 3px solid rgba(0,0,0,0.35);
+}
+
+/* left / right content columns */
+.timeline-item .content {
+  max-width: 420px;
+  padding: 1rem 1.25rem;
+  background: rgba(0,0,0,0.22);
+  border-radius: 8px;
+  color: #bfeecb;
+  line-height: 1.4;
+  font-size: 0.95rem;
+}
+
+/* place left content in column 1 and align right */
+.timeline-item.left .content {
+  grid-column: 1;
+  justify-self: end;
+  text-align: right;
+}
+
+/* place right content in column 3 and align left */
+.timeline-item.right .content {
+  grid-column: 3;
+  justify-self: start;
+  text-align: left;
+}
+
+/* small heading styles inside cards */
+.timeline .year {
+  color: #0ff07a;
+  margin: 0 0 0.25rem 0;
+  font-weight: 700;
+}
+.timeline .title {
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  color: #dfffe6;
+}
+.timeline .desc {
+  margin: 0;
+  color: #bfeecb;
+  opacity: 0.95;
+}
+
+/* responsive: stack on small screens */
+@media (max-width: 720px) {
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .timeline::before { left: 16px; transform: none; width: 3px; }
+  .timeline-item .center { grid-column: 1; justify-content: flex-start; padding-left: 8px; }
+  .dot { margin-left: 4px; }
+  .timeline-item .content {
+    grid-column: 1;
+    text-align: left !important;
+    justify-self: start !important;
+    margin-left: 36px;
+  }
 }
 
 @media (prefers-color-scheme: light) {
