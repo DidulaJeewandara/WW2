@@ -66,7 +66,25 @@
   overflow: hidden;
 }
 
-/* Subtle noise overlay */
+.parties_inner {
+  min-height: 100vh;
+  padding: 80px 24px 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.parties_inner {
+  background-image: url('./parties.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
+  position: relative;
+  z-index: 1;
+}
+
+/* Subtle noise overlay - only on timeline_page */
 .timeline_page::before {
   content: '';
   position: absolute;
@@ -102,7 +120,7 @@
 .tl-subtitle {
   font-family: 'Georgia', serif;
   font-size: 0.95rem;
-  color: #6aab7a;
+  color: white;
   font-style: italic;
   letter-spacing: 0.04em;
 }
@@ -218,3 +236,145 @@
   line-height: 1.65;
   font-style: italic;
 }
+
+.parties-title {
+  font-family: 'Cinzel', 'Georgia', serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: #2c3e50;
+  margin-bottom: 48px;
+  letter-spacing: 0.04em;
+}
+
+/* Each Allied / Axis group */
+.coalition-group {
+  margin-bottom: 60px;
+  padding: 0 12px;
+}
+
+.coalition-group-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #ddd;
+}
+
+.coalition-group-icon {
+  font-size: 1.4rem;
+}
+
+.coalition-group-name {
+  font-family: 'Cinzel', 'Georgia', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2c3e50;
+  letter-spacing: 0.03em;
+}
+
+/* Row of 3 cards */
+.coalition-cards-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* Individual card */
+.coalition-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.coalition-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.14);
+}
+
+/* Flag area */
+.coalition-flag-wrap {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  background: #e8e4dc;
+}
+
+.coalition-flag {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card body */
+.coalition-card-body {
+  padding: 16px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.coalition-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.coalition-country {
+  font-family: 'Cinzel', 'Georgia', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.coalition-entry {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.coalition-leader {
+  font-size: 0.82rem;
+  color: #888;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.coalition-objective {
+  font-size: 0.88rem;
+  color: #444;
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 16px;
+}
+
+.coalition-btn {
+  width: 100%;
+  padding: 10px 0;
+  background: transparent;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  font-family: 'Cinzel', 'Georgia', serif;
+  letter-spacing: 0.06em;
+  color: #444;
+  cursor: pointer;
+  
+}
+
+.coalition-btn:hover {
+  background: #2c3e50;
+  color: #fff;
+  border-color: #2c3e50;
+}
+
+
