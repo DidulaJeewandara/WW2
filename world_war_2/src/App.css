@@ -1,44 +1,34 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .first_page {
-  display: flex;
+
+  min-height: 100vh;
+  padding: 80px 24px 120px;
   position: relative;
-
-  align-items: center;
-  justify-content: center;
-  min-height: 100%;
-  min-width: 100%;
-  width: 100vw;
-  height: 100vh;
-
-
-  /* use public/ served root path (place frontend.png into the project's public/ folder) */
+  overflow: hidden;
   background-image: url('/frontend.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 2rem;
-  /* ensure the top bar doesn't overlap the content */
-  padding-top: calc(2rem + 64px);
-  width: 150%;
 }
 
 .Topic {
-  font-size: 100px;
+  font-size: clamp(2rem, 10vw, 100px);
   line-height: 1.1;
   color: white;
+  margin: 0;
 }
 
 .Topic2 {
-  font-size: 50px;
+  font-size: clamp(1.5rem, 5vw, 50px);
   color: white;
   font-style: italic;
+  margin: 0;
 }
 
 
@@ -58,10 +48,173 @@
   z-index: 1000;
   background-color: rgba(13, 71, 13, 0.8);
 }
-.timeline,
+.timeline-btn,
 .theaters,
 .countries {
   margin: 20px 0;
   display: flex;
   gap: 60px; 
+}
+/* ── Add these to your App.css ── */
+
+/* Timeline page */
+.timeline_page {
+  background: #0a1a0e;
+  min-height: 100vh;
+  padding: 80px 24px 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle noise overlay */
+.timeline_page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.timeline_inner {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+.tl-header {
+  text-align: center;
+  margin-bottom: 72px;
+}
+
+.tl-main-title {
+  font-family: 'Cinzel', 'Georgia', serif;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 700;
+  color: #e8f5e9;
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 40px rgba(0, 255, 106, 0.25);
+  margin-bottom: 10px;
+}
+
+.tl-subtitle {
+  font-family: 'Georgia', serif;
+  font-size: 0.95rem;
+  color: #6aab7a;
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+
+/* Wrapper with the vertical line */
+.tl-wrapper {
+  position: relative;
+}
+
+.tl-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 200, 83, 0.4) 5%,
+    rgba(0, 200, 83, 0.4) 95%,
+    transparent
+  );
+  transform: translateX(-50%);
+}
+
+/* Each event row */
+.tl-event {
+  display: grid;
+  grid-template-columns: 1fr 40px 1fr;
+  align-items: center;
+  margin-bottom: 64px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.tl-event.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Center dot column */
+.tl-dot-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.tl-dot {
+  width: 12px;
+  height: 12px;
+  background: #00ff6a;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00ff6a, 0 0 24px rgba(0, 255, 106, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tl-event:hover .tl-dot {
+  transform: scale(1.5);
+  box-shadow: 0 0 18px #00ff6a, 0 0 40px rgba(0, 255, 106, 0.5);
+}
+
+/* Empty filler cell */
+.tl-empty {
+  /* takes up space on the opposite side */
+}
+
+/* Content block */
+.tl-content {
+  padding: 0 20px;
+  transition: filter 0.3s ease;
+}
+
+.tl-event:hover .tl-content {
+  filter: brightness(1.2);
+}
+
+.tl-left {
+  text-align: right;
+}
+
+.tl-right {
+  text-align: left;
+}
+
+.tl-year {
+  display: block;
+  font-family: 'Cinzel', 'Georgia', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #00ff6a;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+  text-shadow: 0 0 14px rgba(0, 255, 106, 0.5);
+}
+
+.tl-title {
+  font-family: 'Cinzel', 'Georgia', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #e8f5e9;
+  margin-bottom: 8px;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+}
+
+.tl-desc {
+  font-family: 'Georgia', serif;
+  font-size: 0.88rem;
+  color: #6aab7a;
+  line-height: 1.65;
+  font-style: italic;
 }
