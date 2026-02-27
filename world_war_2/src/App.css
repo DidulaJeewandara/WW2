@@ -69,16 +69,17 @@
 .parties_inner {
   min-height: 100vh;
   padding: 80px 24px 120px;
-  position: relative;
+  position: fixed;
   overflow: hidden;
 }
 
-.parties_inner {
+.parties_inner{
   background-image: url('./parties.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  padding:80px 24px 120px;
   
   position: relative;
   z-index: 1;
@@ -276,18 +277,24 @@
 .coalition-cards-row {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
+  gap: 40px;
+  position: relative;
+  margin-left: 40px;
 }
 
 /* Individual card */
 .coalition-card {
   background: #fff;
+  align-items: center;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
+  
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+ 
+
 }
 
 .coalition-card:hover {
@@ -308,6 +315,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  gap: 50px ;
 }
 
 /* Card body */
