@@ -58,7 +58,7 @@
 /* ── Add these to your App.css ── */
 
 /* Timeline page */
-.timeline_page {
+.timeline_page , .theaters_page {
   background: #0a1a0e;
   min-height: 100vh;
   padding: 80px 24px 120px;
@@ -66,7 +66,13 @@
   overflow: hidden;
 }
 
-.parties_inner {
+.parties_innner {
+  min-height: 100vh;
+  padding: 80px 24px 120px;
+  position: fixed;
+  overflow: hidden;
+}
+.theaters-inner {
   min-height: 100vh;
   padding: 80px 24px 120px;
   position: fixed;
@@ -238,7 +244,7 @@
   font-style: italic;
 }
 
-.parties-title {
+.parties-title, .theaters-title {
   font-family: 'Cinzel', 'Georgia', serif;
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   color: #2c3e50;
@@ -385,4 +391,242 @@
   border-color: #2c3e50;
 }
 
+/* ── Add these to your App.css ── */
+
+/* Theaters page */
+.theaters_page {
+  background: #0a1a0e;
+  min-height: 100vh;
+  padding: 80px 24px 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.theaters_inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  padding: 0 20px;
+}
+
+.theaters-title {
+  font-family: 'Cinzel', 'Georgia', serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: #bfeecb;
+  margin-bottom: 48px;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+/* Theater cards grid */
+.theaters-cards-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.theater-card {
+  position: relative;
+  height: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.theater-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(0, 255, 106, 0.2);
+}
+
+.theater-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.theater-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+  color: white;
+}
+
+.theater-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #00ff6a;
+  text-transform: uppercase;
+}
+
+.theater-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 8px 0 0 0;
+  font-family: 'Cinzel', 'Georgia', serif;
+}
+
+/* Modal styles */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.modal-box {
+  background: #1a1a1a;
+  border-radius: 12px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.modal-hero {
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.modal-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.8));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px;
+  color: white;
+}
+
+.modal-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #00ff6a;
+  text-transform: uppercase;
+}
+
+.modal-theater-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 8px 0 0 0;
+  font-family: 'Cinzel', 'Georgia', serif;
+}
+
+.modal-period {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: 4px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.modal-close:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.modal-body {
+  padding: 32px;
+  color: #bfeecb;
+}
+
+.modal-section {
+  margin-bottom: 32px;
+}
+
+.modal-section-title {
+  font-family: 'Cinzel', 'Georgia', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #00ff6a;
+  margin: 0 0 16px 0;
+  letter-spacing: 0.05em;
+}
+
+.modal-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #bfeecb;
+}
+
+.modal-battles {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal-battle-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  color: #bfeecb;
+}
+
+.modal-battle-dot {
+  width: 8px;
+  height: 8px;
+  background: #00ff6a;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.modal-commanders {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.modal-commander {
+  margin: 8px 0;
+  font-size: 0.9rem;
+  color: #bfeecb;
+}
+
+.modal-outcome-section {
+  border-top: 1px solid rgba(0, 255, 106, 0.2);
+  padding-top: 24px;
+}
+
+.modal-outcome {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #bfeecb;
+  font-style: italic;
+}
 
