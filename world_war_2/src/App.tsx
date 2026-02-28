@@ -115,8 +115,7 @@ const theaters: Theater[] = [
 		name: 'African Theater',
 		image: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=600&q=80',
 		period: '1940 – 1943',
-		overview:
-			'The North African Campaign was a series of battles fought across the deserts of Libya, Egypt, Tunisia, Algeria, and Morocco. Control of the Suez Canal and Mediterranean supply lines made Africa strategically vital. The theater was characterized by rapid mechanized warfare across vast desert terrain.',
+		overview:"The African Theater of World War II (1940–1943) was a critical, five-year strategic struggle primarily fought in North Africa for control of the Suez Canal, Mediterranean shipping lanes, and Middle Eastern oil. It consisted of major campaigns in the Western Desert (Egypt/Libya), the invasion of Ethiopia/East Africa, and the Allied landings in Morocco/Algeria (Operation Torch). The Allied victory, culminating in the surrender of 250,000 Axis troops in Tunisia, was a major turning point that allowed the subsequent invasion of Italy and opened the Mediterranean for Allied shipping.",
 		keyBattles: [
 			'Battle of El Alamein (1942)',
 			'Operation Torch (1942)',
@@ -136,8 +135,7 @@ const theaters: Theater[] = [
 		name: 'Eastern Front',
 		image: 'https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=600&q=80',
 		period: '1941 – 1945',
-		overview:
-			'The Eastern Front was the largest and deadliest theater of World War II, involving over 30 million military and civilian deaths. Germany\'s Operation Barbarossa launched a massive three-pronged invasion of the Soviet Union in June 1941. The titanic struggle that followed shaped the entire course of the war.',
+		overview:'The Eastern Front was the largest and deadliest theater of World War II, spanning from June 22, 1941, to May 9, 1945. Fought primarily between Nazi Germany and the Soviet Union, this "war of annihilation" involved massive scale, extreme brutality, and immense loss of life. It served as the decisive theater of the European war, leading to the collapse of the Third Reich and the rise of the Soviet Union.The battle of starlinguard can be considered as the turning point for the allied forces in the eastern front, as it marked the first major defeat of the German army and boosted the morale of the Soviet forces. The battle of Kursk was another significant battle that resulted in a decisive victory for the Soviet Union and marked the end of German offensive operations on the Eastern Front.	',
 		keyBattles: [
 			'Operation Barbarossa (1941)',
 			'Siege of Leningrad (1941–44)',
@@ -152,6 +150,10 @@ const theaters: Theater[] = [
 		outcome:
 			'Soviet victory. The Red Army drove German forces back from the depths of Russia all the way to Berlin. The Eastern Front\'s conclusion directly led to Germany\'s total defeat.',
 	},
+
+	{label:'atlantic ocean fight',name:'Atlantic Theater',image:"https://images.unsplash.com/photo-1565192483566-5cbbe39a76d2?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",period:'1939 – 1945',overview:'The Atlantic Theater of World War II was a critical maritime battleground where the Allies and Axis powers fought for control of the Atlantic Ocean. It involved intense naval warfare, including the Battle of the Atlantic, where German U-boats targeted Allied shipping to disrupt supply lines. The Allies implemented convoy systems and advanced anti-submarine tactics to counter the U-boat threat, ultimately securing vital supply routes and contributing to the overall Allied victory in Europe.',keyBattles:['Battle of the Atlantic (1939–1945)','Operation Drumbeat (1942)','Convoy PQ 17 (1942)','Battle of Convoy HX 229 (1943)','Operation Neptune (1944)'],commanders:{allies:['Max Horton','Andrew Cunningham','Ernest King'],axis:['Karl Dönitz','Erich Raeder']},outcome:'Allied victory. The Allies successfully protected their shipping lanes, ensuring the flow of troops and supplies necessary for the European campaigns. The defeat of the German U-boat threat was a crucial factor in securing victory in Europe.'},
+
+	
 ]
 
 function CoalitionCard({ country, entry, entryColor, leader, flag, objective }: {
@@ -269,9 +271,12 @@ function App() {
 					<div className="timeline">
 						{[
 							{ year: '1939', title: 'The Invasion of Poland', text: 'Germany invades Poland on September 1st, triggering declarations of war by Britain and France.' },
+							{ year: '1940', title: 'The Fall of France', text: 'Germany invades France, leading to the fall of Paris and the establishment of the Vichy regime.' },
 							{ year: '1941', title: 'Pearl Harbor & Barbarossa', text: 'Japan attacks Pearl Harbor; Germany launches Operation Barbarossa against the Soviet Union.' },
 							{ year: '1944', title: 'D-Day: Operation Overlord', text: 'Allied forces launch the largest amphibious assault in history on the beaches of Normandy.' },
 							{ year: '1945', title: 'The Dawn of Peace', text: 'Victory in Europe and the Pacific; the war ends and the global order is reshaped.' },
+							{year:"1947",title:'Droping the atomic bomb',text:'The United States drops atomic bombs on Hiroshima and Nagasaki, leading to Japan\'s surrender and the end of World War II.'},
+
 						].map((item, idx) => {
 							const side = idx % 2 === 0 ? 'left' : 'right'
 							return (
