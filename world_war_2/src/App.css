@@ -65,29 +65,76 @@ html, body {
   padding: 0 16px;
 }
 
-.pages{
+/* ── Replace these in your App.css ── */
+
+.pages {
   position: fixed;
   top: 0;
   left: 0;
-  height: 64px;            /* adjust if you want a different bar height */
+  height: 70px;
   display: flex;
-  flex-direction: row; 
-  gap: 6rem;            
+  flex-direction: row;
+  gap: 4rem;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
   width: 100%;
-  padding: 0 1rem;
+  padding: 0 2rem;
   box-sizing: border-box;
   z-index: 1000;
-  background-color: rgba(13, 71, 13, 0.8);
+  background-color: rgba(10, 40, 10, 0.85);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
+
 .timeline-btn,
-.theaters,
-.countries {
-  margin: 20px 0;
-  display: flex;
-  gap: 60px; 
+.theaters-btn,
+.countries-btn {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  
+
+  font-family: 'Cinzel', 'Georgia', serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(220, 240, 220, 0.85);
+
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s ease;
 }
+
+/* Subtle underline that grows on hover */
+.timeline-btn::after,
+.theaters-btn::after,
+.countries-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #00ff6a;
+  transition: width 0.25s ease;
+}
+
+.timeline-btn:hover,
+.theaters-btn:hover,
+.countries-btn:hover {
+  color: green;
+  border: none;
+
+}
+
+.timeline-btn:hover::after,
+.theaters-btn:hover::after,
+.countries-btn:hover::after {
+  width: 100%;
+}
+
 /* ── Add these to your App.css ── */
 
 /* Timeline page */
