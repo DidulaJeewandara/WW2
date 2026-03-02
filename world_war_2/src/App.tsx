@@ -1,60 +1,6 @@
 import { useState } from 'react'
 import './App.css'
 
-const coalitions = [
-	{
-		name: 'The Allied Powers',
-		icon: '👥',
-		factions: [
-			{
-				country: 'United States', entry: 'Dec 1941', entryColor: '#4a9eff',
-				leader: 'Franklin D. Roosevelt', flag: 'https://flagcdn.com/w320/us.png',
-				objective: "Strategic objective: Provide the industrial 'Arsenal of Democracy', liberation of Western Europe, and total victory in the Pacific theater.",
-			},
-			{
-				country: 'United Kingdom', entry: 'Sept 1939', entryColor: '#4a9eff',
-				leader: 'Winston Churchill', flag: 'https://flagcdn.com/w320/gb.png',
-				objective: 'Strategic objective: Immediate defense of the British Isles, protection of global trade routes, and total containment of Nazi expansion.',
-			},
-			{
-				country: 'Soviet Union', entry: 'June 1941', entryColor: '#4a9eff',
-				leader: 'Joseph Stalin', flag: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Flag_of_the_Soviet_Union.svg/320px-Flag_of_the_Soviet_Union.svg.png',
-				objective: 'Strategic objective: Defense of the motherland against Operation Barbarossa and a massive counter-offensive to capture Berlin.',
-			},
-			{
-				country: 'France', entry: 'Sept 1939', entryColor: '#4a9eff',
-				leader: 'Charles de Gaulle', flag: 'https://flagcdn.com/w320/fr.png',
-				objective: "Strategic objective: Initial defense against German invasion, followed by the Free French Forces' contribution to the liberation of France and victory in Europe.",
-			},
-		],
-	},
-	{
-		name: 'The Axis Powers',
-		icon: '🔴',
-		factions: [
-			{
-				country: 'Germany', entry: 'Sept 1939', entryColor: '#c0392b',
-				leader: 'Adolf Hitler', flag: 'https://flagcdn.com/w320/de.png',
-				objective: "Strategic objective: Establishment of 'Lebensraum' in Eastern Europe and total hegemony over the European continent through Blitzkrieg.",
-			},
-			{
-				country: 'Imperial Japan', entry: 'Sept 1940', entryColor: '#c0392b',
-				leader: 'Emperor Hirohito', flag: 'https://flagcdn.com/w320/jp.png',
-				objective: "Strategic objective: Creation of the 'Greater East Asia Co-Prosperity Sphere' and naval dominance across the Pacific Ocean.",
-			},
-			{
-				country: 'Italy', entry: 'June 1940', entryColor: '#c0392b',
-				leader: 'Benito Mussolini', flag: 'https://flagcdn.com/w320/it.png',
-				objective: "Strategic objective: Expansion of the Italian Empire in Africa and the Mediterranean, seeking to recreate a 'New Roman Empire'.",
-			},
-			{
-				country: 'Hungary', entry: 'Nov 1940', entryColor: '#c0392b',
-				leader: 'Miklós Horthy', flag: 'https://flagcdn.com/w320/hu.png',
-				objective: 'Strategic objective: Territorial expansion into neighboring regions and support for Axis operations.',
-			},
-		],
-	},
-]
 
 interface Theater {
 	label: string
@@ -66,6 +12,188 @@ interface Theater {
 	commanders: { allies: string[]; axis: string[] }
 	outcome: string
 }
+
+interface FactionProfile {
+  country: string
+  entry: string
+  entryColor: string
+  leader: string
+  flag: string
+  objective: string
+  // new detailed fields
+  capital: string
+  population: string
+  military: string
+  ideology: string
+  casualties: string
+  keyEvents: string[]
+}
+
+type Coalition = {
+  name: string
+  icon: string
+  factions: FactionProfile[]
+}
+
+const coalitions: Coalition[] = [
+    {
+        name: 'The Allied Powers',
+        icon: '👥',
+        factions: [
+            {
+                country: 'United States',
+                entry: 'Dec 1941',
+                entryColor: '#4a9eff',
+                leader: 'Franklin D. Roosevelt',
+                flag: 'https://flagcdn.com/w320/us.png',
+                objective: "Provide the industrial 'Arsenal of Democracy', liberation of Western Europe, and total victory in the Pacific theater.",
+                capital: "Washington, D.C.",
+                population: "132 million",
+                military: "16 million",
+                ideology: "Democracy",
+                casualties: "418,500",
+                keyEvents: [
+                    "Pearl Harbor attack",
+                    "Atomic bomb creation",
+                    "D-Day landings"
+                ]
+            },
+            {
+                country: 'United Kingdom',
+                entry: 'Sept 1939',
+                entryColor: '#4a9eff',
+                leader: 'Winston Churchill',
+                flag: 'https://flagcdn.com/w320/gb.png',
+                objective: "Immediate defense of the British Isles, protection of global trade routes, and containment of Nazi expansion.",
+                capital: "London",
+                population: "47 million",
+                military: "5.9 million",
+                ideology: "Constitutional Monarchy",
+                casualties: "450,900",
+                keyEvents: [
+                    "Battle of Britain",
+                    "Evacuation at Dunkirk",
+                    "Operation Overlord"
+                ]
+            },
+            {
+                country: 'Soviet Union',
+                entry: 'June 1941',
+                entryColor: '#4a9eff',
+                leader: 'Joseph Stalin',
+                flag: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Flag_of_the_Soviet_Union.svg/320px-Flag_of_the_Soviet_Union.svg.png',
+                objective: "Defense against Operation Barbarossa and counter-offensive to capture Berlin.",
+                capital: "Moscow",
+                population: "195 million",
+                military: "34.5 million",
+                ideology: "Communism",
+                casualties: "24,000,000",
+                keyEvents: [
+                    "Battle of Stalingrad",
+                    "Siege of Leningrad",
+                    "Battle of Kursk"
+                ]
+            },
+            {
+                country: 'France',
+                entry: 'Sept 1939',
+                entryColor: '#4a9eff',
+                leader: 'Charles de Gaulle',
+                flag: 'https://flagcdn.com/w320/fr.png',
+                objective: "Defense against German invasion, Free French Forces' contribution to liberation.",
+                capital: "Paris",
+                population: "41 million",
+                military: "5 million",
+                ideology: "Republic",
+                casualties: "567,600",
+                keyEvents: [
+                    "Fall of France",
+                    "French Resistance",
+                    "Liberation of Paris"
+                ]
+            },
+        ],
+    },
+    {
+        name: 'The Axis Powers',
+        icon: '🔴',
+        factions: [
+            {
+                country: 'Germany',
+                entry: 'Sept 1939',
+                entryColor: '#c0392b',
+                leader: 'Adolf Hitler',
+                flag: 'https://flagcdn.com/w320/de.png',
+                objective: "Establishment of 'Lebensraum' and hegemony over Europe through Blitzkrieg.",
+                capital: "Berlin",
+                population: "70 million",
+                military: "18 million",
+                ideology: "Fascism",
+                casualties: "7,400,000",
+                keyEvents: [
+                    "Invasion of Poland",
+                    "Battle of the Bulge",
+                    "Fall of Berlin"
+                ]
+            },
+            {
+                country: 'Imperial Japan',
+                entry: 'Sept 1940',
+                entryColor: '#c0392b',
+                leader: 'Emperor Hirohito',
+                flag: 'https://flagcdn.com/w320/jp.png',
+                objective: "Creation of the 'Greater East Asia Co-Prosperity Sphere' and naval dominance.",
+                capital: "Tokyo",
+                population: "73 million",
+                military: "6 million",
+                ideology: "Imperial Monarchy",
+                casualties: "2,500,000",
+                keyEvents: [
+                    "Attack on Pearl Harbor",
+                    "Battle of Midway",
+                    "Atomic bombings"
+                ]
+            },
+            {
+                country: 'Italy',
+                entry: 'June 1940',
+                entryColor: '#c0392b',
+                leader: 'Benito Mussolini',
+                flag: 'https://flagcdn.com/w320/it.png',
+                objective: "Expansion in Africa and the Mediterranean, seeking a 'New Roman Empire'.",
+                capital: "Rome",
+                population: "44 million",
+                military: "4.5 million",
+                ideology: "Fascism",
+                casualties: "457,000",
+                keyEvents: [
+                    "Invasion of Ethiopia",
+                    "North African Campaign",
+                    "Mussolini overthrown"
+                ]
+            },
+            {
+                country: 'Hungary',
+                entry: 'Nov 1940',
+                entryColor: '#c0392b',
+                leader: 'Miklós Horthy',
+                flag: 'https://flagcdn.com/w320/hu.png',
+                objective: "Territorial expansion and support for Axis operations.",
+                capital: "Budapest",
+                population: "9 million",
+                military: "1.5 million",
+                ideology: "Regency",
+                casualties: "580,000",
+                keyEvents: [
+                    "Invasion of Yugoslavia",
+                    "Battle of Stalingrad",
+                    "Horthy removed from power"
+                ]
+            },
+        ],
+	},
+]
+
 
 const theaters: Theater[] = [
 	{
@@ -156,8 +284,23 @@ const theaters: Theater[] = [
 	
 ]
 
-function CoalitionCard({ country, entry, entryColor, leader, flag, objective }: {
-	country: string; entry: string; entryColor: string; leader: string; flag: string; objective: string
+function CoalitionCard({
+  country,
+  entry,
+  entryColor,
+  leader,
+  flag,
+  objective,
+  onLearnMore,
+  ...rest
+}: {
+  country: string
+  entry: string
+  entryColor: string
+  leader: string
+  flag: string
+  objective: string
+  onLearnMore: () => void // 👈 add this prop
 }) {
 	return (
 		<div className="coalition-card">
@@ -171,7 +314,7 @@ function CoalitionCard({ country, entry, entryColor, leader, flag, objective }: 
 				</div>
 				<p className="coalition-leader">Leader: {leader}</p>
 				<p className="coalition-objective">{objective}</p>
-				<button className="coalition-btn">Learn More Profile</button>
+				<button className="coalition-btn" onClick={onLearnMore}>Learn More Profile</button> {/* 👈 add onClick */}
 			</div>
 		</div>
 	)
@@ -235,6 +378,73 @@ function TheaterModal({ theater, onClose }: { theater: Theater; onClose: () => v
 	)
 }
 
+function ProfileModal({ profile, onClose }: { profile: FactionProfile; onClose: () => void }) {
+  return (
+    <div className="modal-backdrop" onClick={onClose}>
+      <div className="modal-box profile-modal-box" onClick={(e) => e.stopPropagation()}>
+        
+        {/* Hero */}
+        <div className="profile-modal-hero">
+          <img src={profile.flag} alt={profile.country} className="profile-modal-flag" />
+          <div className="profile-modal-hero-info">
+            <span className="profile-modal-entry" style={{ backgroundColor: profile.entryColor }}>
+              Entered: {profile.entry}
+            </span>
+            <h2 className="profile-modal-country">{profile.country}</h2>
+            <p className="profile-modal-leader">🎖 {profile.leader}</p>
+            <p className="profile-modal-ideology">{profile.ideology}</p>
+          </div>
+          <button className="modal-close" onClick={onClose}>✕</button>
+        </div>
+
+        {/* Body */}
+        <div className="modal-body">
+
+          {/* Stats row */}
+          <div className="profile-stats-row">
+            <div className="profile-stat">
+              <span className="profile-stat-label">Capital</span>
+              <span className="profile-stat-value">{profile.capital}</span>
+            </div>
+            <div className="profile-stat">
+              <span className="profile-stat-label">Population</span>
+              <span className="profile-stat-value">{profile.population}</span>
+            </div>
+            <div className="profile-stat">
+              <span className="profile-stat-label">Military Size</span>
+              <span className="profile-stat-value">{profile.military}</span>
+            </div>
+            <div className="profile-stat">
+              <span className="profile-stat-label">Casualties</span>
+              <span className="profile-stat-value">{profile.casualties}</span>
+            </div>
+          </div>
+
+          {/* Objective */}
+          <section className="modal-section">
+            <h4 className="modal-section-title">Strategic Objective</h4>
+            <p className="modal-text">{profile.objective}</p>
+          </section>
+
+          {/* Key Events */}
+          <section className="modal-section">
+            <h4 className="modal-section-title">Key Events</h4>
+            <ul className="modal-battles">
+              {profile.keyEvents.map((e) => (
+                <li key={e} className="modal-battle-item">
+                  <span className="modal-battle-dot" />
+                  {e}
+                </li>
+              ))}
+            </ul>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function TheaterCard({ theater, onClick }: { theater: Theater; onClick: () => void }) {
 	return (
 		<div className="theater-card" onClick={onClick}>
@@ -249,6 +459,7 @@ function TheaterCard({ theater, onClick }: { theater: Theater; onClick: () => vo
 
 function App() {
 	const [activeTheater, setActiveTheater] = useState<Theater | null>(null)
+	const[activeProfile,setActiveProfile]=useState<FactionProfile|null>(null)
 
 	return (
 		<>
@@ -302,7 +513,13 @@ function App() {
 								<h3 className="coalition-group-name">{coalition.name}</h3>
 							</div>
 							<div className="coalition-cards-row">
-								{coalition.factions.map((f) => <CoalitionCard key={f.country} {...f} />)}
+								{coalition.factions.map((f) => (
+									<CoalitionCard
+									  key={f.country}
+									  {...f}
+									  onLearnMore={() => setActiveProfile(f)}  // 👈 add this
+									/>
+								))}
 							</div>
 						</div>
 					))}
@@ -325,6 +542,11 @@ function App() {
 			{activeTheater && (
 				<TheaterModal theater={activeTheater} onClose={() => setActiveTheater(null)} />
 			)}
+
+			{/* Profile Modal */}
+			{activeProfile && (                                    // 👈 add this block
+  <ProfileModal profile={activeProfile} onClose={() => setActiveProfile(null)} />
+)}
 		</>
 	)
 }
