@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import './App.css'
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom'
+import Technical from './components/technnical.tsx'
 
 
 interface Theater {
@@ -291,8 +293,7 @@ function CoalitionCard({
   leader,
   flag,
   objective,
-  onLearnMore,
-  ...rest
+  onLearnMore
 }: {
   country: string
   entry: string
@@ -300,7 +301,7 @@ function CoalitionCard({
   leader: string
   flag: string
   objective: string
-  onLearnMore: () => void // 👈 add this prop
+  onLearnMore: () => void 
 }) {
 	return (
 		<div className="coalition-card">
@@ -457,9 +458,10 @@ function TheaterCard({ theater, onClick }: { theater: Theater; onClick: () => vo
 	)
 }
 
-function App() {
+function MainAppContent() {
 	const [activeTheater, setActiveTheater] = useState<Theater | null>(null)
 	const[activeProfile,setActiveProfile]=useState<FactionProfile|null>(null)
+	const navigate = useNavigate()
 
 	return (
 		<>
@@ -472,6 +474,7 @@ function App() {
 					<button className="timeline-btn" onClick={() => document.getElementById('timeline-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>Timeline</button>
 					<button className="countries-btn" onClick={() => document.getElementById('parties')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>Coalitions</button>
 					<button className="theaters-btn" onClick={() => document.getElementById('Theaters')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>Theaters</button>
+	                <button className="technical-btn" onClick={()=>navigate("./technnical")}>Inventions</button>			
 				</div>
 			</section>
 
@@ -551,4 +554,14 @@ function App() {
 	)
 }
 
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainAppContent />} />
+        <Route path="/technnical" element={<Technical />} />
+      </Routes>
+    </Router>
+  )
+}
 export default App

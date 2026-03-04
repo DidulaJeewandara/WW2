@@ -88,7 +88,8 @@ html, body {
 
 .timeline-btn,
 .theaters-btn,
-.countries-btn {
+.countries-btn,
+.technical-btn {
   margin: 0;
   padding: 0;
   background: none;
@@ -276,9 +277,6 @@ html, body {
 }
 
 /* Empty filler cell */
-.tl-empty {
-  /* takes up space on the opposite side */
-}
 
 /* Content block */
 .tl-content {
