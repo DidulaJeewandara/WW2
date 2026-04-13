@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
 import Technical from './components/technnical.tsx'
 
 
